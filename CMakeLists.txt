@@ -236,9 +236,9 @@ if ( WIN32 )
 	endif ()
 
 	# MSVC specific 
-	set ( SYMBOL_UNDERSCORE 1 )
 	set ( SRC_C ${SRC_C} src/x86/ffi.c )
 	if ( MSVC )
+		set ( SYMBOL_UNDERSCORE 1 )
 		set ( HAVE_AS_X86_PCREL 0 )
 		set ( SRC_ASM ${SRC_ASM} ${CMAKE_CURRENT_BINARY_DIR}/win${FFI_BIT}_plain.asm)
 		add_custom_command(OUTPUT
