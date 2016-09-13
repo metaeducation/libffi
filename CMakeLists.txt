@@ -151,12 +151,12 @@ else ( )
 endif ( )
 
 message("system_processor: ${CMAKE_SYSTEM_PROCESSOR}")
-if ( ${CMAKE_SYSTEM_PROCESSOR} MATCHES "^aarch64" )
+if ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^aarch64" )
 	set ( TARGET "AARCH64" )
 	set ( TARGETDIR "aarch64" )
-elseif ( ${CMAKE_SYSTEM_PROCESSOR} MATCHES "^AMD64" 
+elseif ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^AMD64" 
 		OR
-		${CMAKE_SYSTEM_PROCESSOR} MATCHES "^x86_64" 
+		"${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^x86_64" 
 		)
 	set ( TARGET "X86_64" )
 	set ( TARGETDIR "x86" )
@@ -181,7 +181,7 @@ elseif ( ${CMAKE_SYSTEM_PROCESSOR} MATCHES "^AMD64"
 		endif ( )
 
 	endif ( )
-elseif ( ${CMAKE_SYSTEM_PROCESSOR} MATCHES "^X86" )
+elseif ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^X86" )
 	set ( TARGET "X86" )
 	set ( TARGETDIR "x86" )
 	if ( ${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD"
@@ -204,7 +204,7 @@ elseif ( ${CMAKE_SYSTEM_PROCESSOR} MATCHES "^X86" )
 		set ( FFI_BIT 32 )
 	endif ( )
 
-else ( ${CMAKE_SYSTEM_PROCESSOR} MATCHES "^arm" )
+else ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^arm" )
 	set ( TARGET "ARM" )
 	set ( TARGETDIR "arm" )
 	if ( APPLE )
