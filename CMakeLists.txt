@@ -178,6 +178,7 @@ elseif ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^AMD64"
 		else ( )
 			set ( TARGET "X86_WIN32" )
 			set ( FFI_BIT 32 )
+			set ( SYMBOL_UNDERSCORE 1 )
 		endif ( )
 
 	endif ( )
@@ -202,6 +203,7 @@ elseif ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^X86" )
 	elseif ( WIN32 OR CYGWIN OR MINGW )
 		set ( TARGET "X86_WIN32" )
 		set ( FFI_BIT 32 )
+		set ( SYMBOL_UNDERSCORE 1 )
 	endif ( )
 
 else ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^arm" )
@@ -237,8 +239,7 @@ if ( WIN32 )
 
 	# MSVC specific 
 	set ( SRC_C ${SRC_C} src/x86/ffi.c )
-	if ( MSVC )
-		set ( SYMBOL_UNDERSCORE 1 )
+	if ( MSVC)
 		set ( HAVE_AS_X86_PCREL 0 )
 		set ( SRC_ASM ${SRC_ASM} ${CMAKE_CURRENT_BINARY_DIR}/win${FFI_BIT}_plain.asm)
 		add_custom_command(OUTPUT
