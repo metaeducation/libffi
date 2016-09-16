@@ -158,7 +158,9 @@ elseif ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^AMD64"
 		OR
 		"${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^x86_64" 
 		)
-	set ( TARGET "X86_64" )
+	if (HAVE_64BIT)
+		set ( TARGET "X86_64" )
+	endif ()
 	set ( TARGETDIR "x86" )
 	if ( APPLE )
 		set ( TARGET "X86_DARWIN" )
@@ -182,7 +184,10 @@ elseif ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^AMD64"
 		endif ( )
 
 	endif ( )
-elseif ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^X86" )
+elseif ( "${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^X86"
+		OR
+		"${CMAKE_SYSTEM_PROCESSOR}" MATCHES "^i[3-6]86" 
+	 	)
 	set ( TARGET "X86" )
 	set ( TARGETDIR "x86" )
 	if ( ${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD"
