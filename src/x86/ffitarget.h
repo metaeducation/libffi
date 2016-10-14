@@ -50,7 +50,11 @@
 #endif
 
 #define FFI_TARGET_SPECIFIC_STACK_SPACE_ALLOCATION
+#ifndef _MSC_VER
+/* MSC doesn't support _Complex types: 
+https://connect.microsoft.com/VisualStudio/feedback/details/1551173/msvc-2015-complex-hs-complex-i-macro-does-not-conform-to-the-standard */
 #define FFI_TARGET_HAS_COMPLEX_TYPE
+#endif
 
 /* ---- Generic type definitions ----------------------------------------- */
 
